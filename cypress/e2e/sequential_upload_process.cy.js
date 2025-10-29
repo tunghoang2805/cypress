@@ -11,10 +11,10 @@ describe('template spec', () => {
     cy.get('[name="data_reference_date"]').click();
     cy.get('[name="data_reference_date"]').type('2025-09-30');
     cy.get('[name="fileUpload.Poolcut"]').selectFile('/Users/tunghoang/Desktop/test data/metro/june_pcl.csv',{force: true});
-    cy.wait(5000);
+    cy.wait(2000);
     cy.get('#mainForm button.submit').should('be.enabled');
     cy.get('#mainForm button.submit').click();
-    cy.wait(30000);
+    cy.wait(35000);
     cy.contains('Complete').should('be.visible');
     cy.get('a.text-white').click();
     cy.get('div.hidden.border-b button:nth-child(2)').click();
@@ -22,7 +22,7 @@ describe('template spec', () => {
     cy.get('[name="data_reference_date"]').click();
     cy.get('[name="data_reference_date"]').type('2025-09-30');
     cy.get('[name="fileUpload.PoolcutSecurity"]').selectFile('/Users/tunghoang/Desktop/test data/metro/june_pcs.csv',{force: true});
-    cy.wait(5000);
+    cy.wait(2000);
     cy.get('#mainForm button.submit').should('be.enabled');
     cy.get('#mainForm button.submit').click();
     cy.wait(15000);
@@ -32,33 +32,22 @@ describe('template spec', () => {
     cy.contains('Import Servicer Report').click();
     cy.get('#mainForm [name="collections_period_end"]').select('2025-09-30');
     cy.get('[name="fileUpload.Servicer"]').selectFile('/Users/tunghoang/Desktop/test data/metro/june_lmr.csv',{force: true});
-    cy.wait(5000);
+    cy.wait(2000);
     cy.get('#mainForm button.submit').should('be.enabled');
     cy.get('#mainForm button.submit').click();
     cy.wait(5000);
     cy.get('label.block').click();
     cy.get('input.rounded').check();
     cy.contains('Retry Import').click();
-    cy.wait(30000);
+    cy.wait(35000);
     cy.contains('Complete').should('be.visible');
     cy.contains('Return to list').click();
-
-    // cy.get('a.text-white').click();
-    // cy.get('div:nth-child(4) > div.flex > [data-testid="menu-item"]').click();
-    // cy.get('a[href="https://dash-demo.sequenti.al/trusts/01k82kqy8njcm8p2v3prm24y0p/reporting/bank-reconciliation"]').click();
-    // cy.get('div:nth-child(1) > div.min-w-0 > a.focus\\:outline-none > p.font-medium').click();
-    // cy.get('#mainForm button.float-left').click();
-    // cy.get('#mainForm label.relative span').click();
-    // cy.get('[name="fileUpload.t"]').click();
-    // cy.get('#mainForm button.submit').should('be.enabled');
-    // cy.get('#mainForm button.submit').click();
-    // cy.get('a[href="https://dash-demo.sequenti.al/trusts/01k82kqy8njcm8p2v3prm24y0p/reporting/bank-reconciliation"]').click();
-    // cy.get('div:nth-child(2) > div.min-w-0 > a.focus\\:outline-none > p.font-medium').click();
-    // cy.get('#mainForm button.float-left').click();
-    // cy.get('#mainForm label.relative span').click();
-    // cy.get('[name="fileUpload.t"]').click();
-    // cy.get('#mainForm button.submit').click();
-    // cy.get('button.items-center').click();
-    // cy.get('form[method="POST"] a.block').click();
+    cy.visit("https://dash-demo.sequenti.al/trusts/01k82kqy8njcm8p2v3prm24y0p/reporting/bank-reconciliation")
+    cy.contains('coll pay').click();
+    cy.get('[name="collections_period_end"]').select('2025-09-30');
+    cy.contains('Import Transactions').click();
+    cy.get('[name="fileUpload.t"]').selectFile('/Users/tunghoang/Desktop/test data/bank_coll.csv',{force: true});
+    cy.get('[type="submit"]').click();
+    cy.get('[x-text = "message"]').should('be.visible');
   })
 })
