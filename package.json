@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "cypress": "^15.5.0"
+  },
+  "devDependencies": {
+    "cy-verify-downloads": "^0.3.0"
   }
 }
