@@ -16,5 +16,26 @@ describe('template spec', () => {
     cy.get('select[name="importId"]').select(lastValue);
   });
     cy.get('button[type="submit"]').click();
+    cy.get('p[class="text-sm"]',{timeout:30000}).contains('The data has been validated!').should('be.visible');
+    cy.get('span').contains('Last Import').click();
+    cy.get('button').contains('Next').should('be.enabled').click();
+    cy.get('p[class="text-sm"]').contains('Initial loan allocation complete!',{timeout:20000}).should('be.visible');
+    cy.get('button').contains('Next').should('be.enabled').click();
+    cy.get('[data-testid="select-trust-validate-next"]').contains('Next').click();
+    cy.get('input[type="checkbox"]').check();
+    cy.get('input[type="text"]').type('Tung Cypress Automated Test Allocation');
+    cy.get('button[data-testid="select-trust-validate-next"]').should('be.enabled').click();
+    cy.get('button[type="button"]').contains('Next').click();
+    cy.get('[data-testid="download-pdf"]').contains('PDF').click();
+    cy.verifyDownload('AllocationNotice', { contains: true, fileExtension: '.pdf' });
+    cy.get('[data-testid="download-csv"]').contains('CSV').click();
+    cy.verifyDownload('AllocationPaymentInstructions', { contains: true, fileExtension: '.csv' });
+    // cy.get('[data-testid="download-pdf"]').click();
+    // cy.verifyDownload('AllocationPaymentInstructions', { contains: true, fileExtension: '.pdf' });
+    // cy.get('[data-testid="download-csv"]').click();
+    // cy.verifyDownload('AllocationPaymentInstructions', { contains: true, fileExtension: '.csv' });
+    cy.contains('Return to list').click();
+    cy.get('[data-testid="status-badge"]').should('be.visible').and('contain.text', 'Completed');
+
   })
 })
