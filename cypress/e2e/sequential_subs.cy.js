@@ -32,7 +32,7 @@ cy.get('select[name="selectedNoticeTemplate"]')
   cy.get('[data-testid="download-excel"]').contains('Download').click();
   cy.verifyDownload('SubscriptionNotice', { contains: true, fileExtension: '.pdf' });
   cy.get('a').contains('Return to list').click();
-  cy.get('button[class="cursor-pointer text-sequential-button hover:text-sequential-button-hover"]').click();
+  cy.get('button[class="cursor-pointer text-sequential-button hover:text-sequential-button-hover"]').click({ multiple: true });
   cy.get('button[type="button"]').contains('OK').click();
   })
 })
