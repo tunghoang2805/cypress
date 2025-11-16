@@ -5,7 +5,7 @@ describe('template spec', () => {
     cy.get('[name="password"]').type('@Starlone321!');
     cy.get('[name="remember"]').check();
     cy.get('button.border').click();
-    cy.visit('https://dash-demo.sequenti.al/trusts/01k82kqy8njcm8p2v3prm24y0p/allocation');
+    cy.visit('https://dash-demo.sequenti.al/trusts/01k586vsh3amtt8y6td9stqmxd/allocation');
     cy.contains('New Allocation').click();
     cy.get('select[name="salesProcessDataSourceType"]').select("Use Existing Import");
     cy.contains('Select Poolcut Import:').should('be.visible');
@@ -25,7 +25,7 @@ describe('template spec', () => {
     cy.get('input[type="checkbox"]').check();
     cy.get('input[type="text"]').type('Tung Cypress Automated Test Allocation');
     cy.get('button[data-testid="select-trust-validate-next"]').should('be.enabled').click();
-    cy.get('button[type="button"]').contains('Next').click();
+    // cy.get('button[type="button"]').contains('Next').click();
     cy.get('[data-testid="download-pdf"]').contains('PDF').click();
     cy.verifyDownload('AllocationNotice', { contains: true, fileExtension: '.pdf' });
     cy.get('[data-testid="download-csv"]').contains('CSV').click();
