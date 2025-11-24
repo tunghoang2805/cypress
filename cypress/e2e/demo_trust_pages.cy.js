@@ -38,8 +38,23 @@ cy.get('aside').within(() => {
   cy.contains('Note Management').should('be.visible').click();
 });
 cy.contains('Margins').click();
+  cy.contains('a','Update Margin').click();
+  cy.contains('button','Save').click();
+  cy.get('class="bg-sequential-banner-success"').should('be.visible');
+  cy.contains('a','Update Margin').click();
+  cy.contains('button','Cancel').click();
 cy.contains('Ratings').click();
-cy.contains('Subordination').click();
+  cy.contains('a','Get Started').click();
+  cy.get('nav[aria-label="Breadcrumb"]').within(() => {cy.get('ol[role="list"] > li:nth-child(2) a').click()});
+cy.get('aside').within(() => {
+  cy.contains('Note Management').click();
+});
+  cy.contains('Subordination').click();
+  cy.contains('a','Update Subordination').click();
+  cy.contains('button','Save').click();
+  cy.get('class="bg-sequential-banner-success"').should('be.visible');
+  cy.contains('a','Update Subordination').click();
+  cy.contains('button','Cancel').click();
 cy.get('aside').within(() => {
   cy.contains('Reporting').should('be.visible').click();
 });
