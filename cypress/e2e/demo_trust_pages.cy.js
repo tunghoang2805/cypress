@@ -39,8 +39,8 @@ cy.get('aside').within(() => {
 });
 cy.contains('Margins').click();
   cy.contains('a','Update Margin').click();
-  cy.contains('button','Save').click();
-  cy.get('class="bg-sequential-banner-success"').should('be.visible');
+  cy.contains('button','SAVE').click();
+  cy.get('[class="bg-sequential-banner-success"]').should('be.visible');
   cy.contains('a','Update Margin').click();
   cy.contains('button','Cancel').click();
 cy.contains('Ratings').click();
@@ -51,8 +51,8 @@ cy.get('aside').within(() => {
 });
   cy.contains('Subordination').click();
   cy.contains('a','Update Subordination').click();
-  cy.contains('button','Save').click();
-  cy.get('class="bg-sequential-banner-success"').should('be.visible');
+  cy.contains('button','SAVE').click();
+  cy.get('[class="bg-sequential-banner-success"]').should('be.visible');
   cy.contains('a','Update Subordination').click();
   cy.contains('button','Cancel').click();
 cy.get('aside').within(() => {
